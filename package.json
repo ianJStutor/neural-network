@@ -1,0 +1,32 @@
+{
+    "name": "neural-network",
+    "version": "1.0.0",
+    "description": "Toy JavaScript neural network for games, demos, or education",
+    "main": "neural-network.js",
+    "type": "module",
+    "jest": {
+        "transform": {}
+    },
+    "scripts": {
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ianJStutor/neural-network.git"
+    },
+    "keywords": [
+        "neural network",
+        "fully connected",
+        "feed forward",
+        "genetic mutation algorithm"
+      ],
+    "author": "Ian Marshall",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/ianJStutor/neural-network/issues"
+    },
+    "homepage": "https://github.com/ianJStutor/neural-network#readme",
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

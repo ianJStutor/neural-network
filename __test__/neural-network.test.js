@@ -18,7 +18,9 @@ describe("NN instantiation", () => {
     });
     test("level has correct properties", () => {
         expect(Array.isArray(nn1.levels[0].inputs)).toBe(true);
+        expect(Array.isArray(nn1.levels[0].inputs[0])).toBeFalsy();
         expect(Array.isArray(nn1.levels[0].outputs)).toBe(true);
+        expect(Array.isArray(nn1.levels[0].outputs[0])).toBeFalsy();
         expect(Array.isArray(nn1.levels[0].biases)).toBe(true);
         expect(Array.isArray(nn1.levels[0].weights)).toBe(true);
         expect(Array.isArray(nn1.levels[0].weights[0])).toBe(true);
@@ -39,8 +41,10 @@ describe("NN instantiation", () => {
         expect(nn2.levels.length).toBe(1);
         expect(Array.isArray(nn2.levels[0].inputs)).toBe(true);
         expect(nn2.levels[0].inputs.length).toBe(inputs2);
+        expect(nn2.levels[0].inputs.every(a => !Boolean(a))).toBe(true);
         expect(Array.isArray(nn2.levels[0].outputs)).toBe(true);
         expect(nn2.levels[0].outputs.length).toBe(outputs2);
+        expect(nn2.levels[0].outputs.every(a => !Boolean(a))).toBe(true);
         expect(Array.isArray(nn2.levels[0].biases)).toBe(true);
         expect(nn2.levels[0].biases.length).toBe(outputs2);
         expect(nn2.levels[0].biases.every(a => a >= min && a <= max));

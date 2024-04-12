@@ -55,3 +55,23 @@ describe("NN instantiation", () => {
         expect(nn2.levels[0].weights.every(a => a.every(b => b >= min && b <= max))).toBe(true);
     });
 });
+
+describe("NN mutation", () => {
+    const inputs = 1;
+    const outputs = 1;
+    const nn = new NeuralNetwork(inputs, outputs);
+    test("does not mutate values with zero amount", () => {
+        const bias = nn.levels[0].biases[0];
+        const weight = nn.levels[0].weights[0][0];
+        NeuralNetwork.mutate(nn, 0);
+        expect(nn.levels[0].biases[0] === bias).toBe(true);
+        expect(nn.levels[0].weights[0][0] === weight).toBe(true);
+    });
+    test("mutates values with nonzero amount", () => {
+        const bias = nn.levels[0].biases[0];
+        const weight = nn.levels[0].weights[0][0];
+        NeuralNetwork.mutate(nn);
+        expect(nn.levels[0].biases[0] !== bias).toBe(true);
+        expect(nn.levels[0].weights[0][0] !== weight).toBe(true);
+    });
+});

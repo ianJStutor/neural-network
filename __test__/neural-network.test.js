@@ -56,6 +56,37 @@ describe("NN instantiation", () => {
     });
 });
 
+describe("NN feed forward", () => {
+    const inputs = 1;
+    const outputs = 1;
+    const nn = new NeuralNetwork(inputs, outputs);
+    test("returns zero or one", () => {
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+        expect([0,1].includes(NeuralNetwork.feedForward(nn, [Math.random()*2-1])[0])).toBe(true);
+    });
+    test("returns the same output for the same input", () => {
+        const input = Math.random()*2-1;
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+        expect(NeuralNetwork.feedForward(nn, [input])[0] === NeuralNetwork.feedForward(nn, [input])[0]).toBe(true);
+    });
+});
+
 describe("NN mutation", () => {
     const inputs = 1;
     const outputs = 1;

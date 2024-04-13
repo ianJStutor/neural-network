@@ -46,7 +46,7 @@ Import the JS into your main JavaScript file and call <code>new NeuralNetwork(ar
     ```
     This produces a network with two inputs, four outputs, and three nodes on a single hidden layer.
 
-Using the network makes use of static methods, which simplifies serialization since instance methods cannot be converted to JSON.
+This class makes use of static methods, which simplifies serialization since instance methods cannot be converted to JSON.
 
 ```js
 const nn = new NeuralNetwork(2, 3, 1);

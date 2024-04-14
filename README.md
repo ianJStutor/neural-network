@@ -28,6 +28,8 @@ The following was inserted into <code>package.json</code> for testing to work.
 
 ## Usage
 
+### Instantiation
+
 Include <code>neural-network.js</code> in your project.
 
 ```js
@@ -46,10 +48,27 @@ Import the JS into your main JavaScript file and call <code>new NeuralNetwork(ar
     ```
     This produces a network with two inputs, four outputs, and three nodes on a single hidden layer.
 
-This class makes use of static methods, which simplifies serialization since instance methods cannot be converted to JSON.
+### Feed forward
+
+Inputs and outputs are arrays. The length of these arrays are dependent on the arguments given to the NeuralNetwork on instantiation. The first number in the argument list is the length of the expected input array, and the last number in the argument list is the length of the returned output array.
 
 ```js
 const nn = new NeuralNetwork(2, 3, 1);
 const inputs = [1, -1];
 const output = NeuralNetwork.feedForward(nn, inputs); //either [0] or [1]
 ```
+
+### Mutate
+
+
+
+### Serialize
+
+This class makes use of static methods, which simplifies serialization since instance methods cannot be converted to JSON.
+
+```js
+const nn = new NeuralNetwork(1, 1);
+const serialized = JSON.stringify(nn);
+```
+
+> NOTE: There is a plan to create a NeuralNetwork instance _from_ a serialized version, but it doesn't yet exist.

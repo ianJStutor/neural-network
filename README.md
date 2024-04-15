@@ -68,7 +68,6 @@ This class makes use of static methods, which simplifies serialization since ins
 
 ```js
 const nn = new NeuralNetwork(1, 1);
-const serialized = JSON.stringify(nn);
+const serialized = NeuralNetwork.toString(nn);
+const nnClone = NeuralNetwork.fromString(serialized);
 ```
-
-> NOTE: There is a plan to create a NeuralNetwork instance _from_ a serialized version, but it doesn't yet exist.

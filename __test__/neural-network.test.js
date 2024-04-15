@@ -106,3 +106,21 @@ describe("NN mutation", () => {
         expect(nn.levels[0].weights[0][0] !== weight).toBe(true);
     });
 });
+
+describe("NN serialization", () => {
+    const shape = [2,3,4];
+    const nn = new NeuralNetwork(...shape);
+    test("stringifies to valid JSON", () => {
+        const str = NeuralNetwork.toString(nn);
+        const obj = JSON.parse(str);
+        expect(typeof str === 'string').toBe(true);
+        expect(obj).toHaveProperty("shape");
+        expect(obj).toHaveProperty("levels");
+    });
+    test("parses into exact clone", () => {
+        const str = NeuralNetwork.toString(nn);
+        const nnClone = NeuralNetwork.fromString(str);
+        const nnCloneStr = NeuralNetwork.toString(nnClone);
+        expect(str === nnCloneStr).toBe(true);
+    });
+});

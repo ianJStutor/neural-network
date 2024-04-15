@@ -60,7 +60,13 @@ const output = NeuralNetwork.feedForward(nn, inputs); //either [0] or [1]
 
 ### Mutate
 
+There is a simple genetic mutation implementation. All the biases and weights are adjusted by a random value between <code>1</code> and <code>-1</code>, limited by the normalized <code>amount</code> argument, which defaults to <code>1</code>. An <code>amount</code>of zero leaves the original values as is and an <code>amount</code> of one completely swaps values for new ones. Values for <code>amount</code> between zero and one nudge existing values toward a new random value.
 
+```js
+const nn = new NeuralNetwork(2, 3);
+const slightlyEvolvedNn = NeuralNetwork.mutate(nn, 0.01);
+const greatlyEvolvedNn = NeuralNetwork.nutate(nn, 0.99);
+```
 
 ### Serialize
 

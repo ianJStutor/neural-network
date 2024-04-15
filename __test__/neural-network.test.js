@@ -121,6 +121,10 @@ describe("NN serialization", () => {
         const str = NeuralNetwork.toString(nn);
         const nnClone = NeuralNetwork.fromString(str);
         const nnCloneStr = NeuralNetwork.toString(nnClone);
+        const inputs = [Math.random()*2-1, Math.random()*2-1];
+        const nnOutputs = JSON.stringify(NeuralNetwork.feedForward(nn, inputs));
+        const nnCloneOutputs = JSON.stringify(NeuralNetwork.feedForward(nnClone, inputs));
         expect(str === nnCloneStr).toBe(true);
+        expect(nnOutputs === nnCloneOutputs).toBe(true);
     });
 });

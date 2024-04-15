@@ -1,5 +1,6 @@
 export default class NeuralNetwork {
     constructor(...neuronCounts) {
+        this.shape = neuronCounts;
         this.levels = [];
         for (let i = 0; i < neuronCounts.length - 1; i++) {
             this.levels.push(new Level(neuronCounts[i], neuronCounts[i + 1]));
@@ -33,6 +34,22 @@ export default class NeuralNetwork {
                 }
             }
         });
+    }
+
+    static toString(network) {
+        return JSON.stringify({
+            shape: network.shape,
+            levels: network.levels.map(Level.toString)
+        });
+    }
+
+    static fromString(str) {
+        const { shape, levels } = JSON.parse(str);
+        const network = new NeuralNetwork(...shape);
+        for (let i=0; i<levels.length; i++) {
+            network.levels[i] = Level.fromString(levels[i]);
+        }
+        return network;
     }
 
     static lerp(a, b, t) {
@@ -80,5 +97,22 @@ class Level {
         }
 
         return level.outputs;
+    }
+
+    static toString(level) {
+        return JSON.stringify({
+            inputs: level.inputs.map(() => (null)),
+            outputs: level.outputs.map(() => (null)),
+            weights: level.weights,
+            biases: level.biases
+        });
+    }
+
+    static fromString(str) {
+        const { inputs, outputs, weights, biases } = JSON.parse(str);
+        const level = new Level(inputs.length, outputs.length);
+        level.weights = weights;
+        level.biases = biases;
+        return level;
     }
 }

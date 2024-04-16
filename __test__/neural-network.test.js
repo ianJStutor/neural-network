@@ -107,7 +107,7 @@ describe("NN mutation", () => {
     });
 });
 
-describe("NN serialization", () => {
+describe("NN serialization and cloning", () => {
     const shape = [2,3,4];
     const nn = new NeuralNetwork(...shape);
     test("stringifies to valid JSON", () => {
@@ -126,5 +126,11 @@ describe("NN serialization", () => {
         const nnCloneOutputs = JSON.stringify(NeuralNetwork.feedForward(nnClone, inputs));
         expect(str === nnCloneStr).toBe(true);
         expect(nnOutputs === nnCloneOutputs).toBe(true);
+    });
+    test("direct clone functionality works", () => {
+        const str = NeuralNetwork.toString(nn);
+        const nnClone = NeuralNetwork.clone(nn);
+        const nnCloneStr = NeuralNetwork.toString(nnClone);
+        expect(str === nnCloneStr).toBe(true);
     });
 });

@@ -52,6 +52,10 @@ export default class NeuralNetwork {
         return network;
     }
 
+    static clone(network) {
+        return NeuralNetwork.fromString(NeuralNetwork.toString(network));
+    }
+
     static lerp(a, b, t) {
         return a + (b - a) * t;
     }

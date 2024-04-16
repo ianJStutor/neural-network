@@ -68,7 +68,7 @@ const slightlyEvolvedNn = NeuralNetwork.mutate(nn, 0.01);
 const greatlyEvolvedNn = NeuralNetwork.nutate(nn, 0.99);
 ```
 
-### Serialize
+### Serialize and clone
 
 This class makes use of static methods, which simplifies serialization since instance methods cannot be converted to JSON.
 
@@ -76,4 +76,6 @@ This class makes use of static methods, which simplifies serialization since ins
 const nn = new NeuralNetwork(1, 1);
 const serialized = NeuralNetwork.toString(nn);
 const nnClone = NeuralNetwork.fromString(serialized);
+
+const directClone = NeuralNetwork.clone(nn);
 ```

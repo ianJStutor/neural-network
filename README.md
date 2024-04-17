@@ -6,6 +6,8 @@
 
 Toy neural network, not optimized for speed, but perfect for game AIs, demo projects, or education. Fully connected, feed-forward artificial neural network. Output is clamped to either zero or one. No backpropagation is currently provided, but a basic genetic mutation algorithm is implemented.
 
+Written in vanilla JavaScript, my favorite flavor!
+
 ## Testing
 
 ```bash
